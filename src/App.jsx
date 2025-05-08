@@ -1,12 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import EventPage from "./components/EventPage.jsx";
-import CategoryPage from "./components/CategoryPage.jsx";
-import Dashboard from "./components/Dashboard.jsx";
-import '../src/styles/app.scss';
+import Home from "./components/Home";
+import EventPage from "./components/EventPage";
+import CategoryPage from "./components/CategoryPage";
+import Dashboard from "./components/Dashboard";
 
-
-export default function App() {
+function App() {
   return (
     <Router>
       <Routes>
@@ -19,4 +17,4 @@ export default function App() {
   );
 }
 
-
+export default App;
