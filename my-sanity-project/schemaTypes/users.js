@@ -9,13 +9,13 @@ export const users = {
       type: 'string'
     },
     {
-        name: "slug",
-        title: "URL",
-        type: "slug",
-        options: {
-          source: "title",
-          maxLength: 50
-        }
+      name: 'slug',
+      title: 'URL',
+      type: 'slug',
+      options: {
+        source: 'name',
+        maxLength: 50
+      }
     },
     {
       name: 'gender',
@@ -31,9 +31,9 @@ export const users = {
       type: 'number'
     },
     {
-        name: 'image',
-        title: 'Bilde',
-        type: 'image'
+      name: 'image',
+      title: 'Bilde',
+      type: 'image'
     },
     {
       name: 'previousPurchases',
@@ -46,6 +46,12 @@ export const users = {
       title: 'Ønskeliste',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'event' }] }]
+    },
+    {
+      name: 'friends',
+      title: 'Venner',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'user' }] }]
     }
   ]
 };
