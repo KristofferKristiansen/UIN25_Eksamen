@@ -31,6 +31,11 @@ export const users = {
       type: 'number'
     },
     {
+        name: 'image',
+        title: 'Bilde',
+        type: 'image'
+    },
+    {
       name: 'previousPurchases',
       title: 'Tidligere kjøp',
       type: 'array',
