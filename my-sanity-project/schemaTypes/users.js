@@ -9,6 +9,15 @@ export const users = {
       type: 'string'
     },
     {
+        name: "slug",
+        title: "URL",
+        type: "slug",
+        options: {
+          source: "title",
+          maxLength: 50
+        }
+    },
+    {
       name: 'gender',
       title: 'Kjønn',
       type: 'string',

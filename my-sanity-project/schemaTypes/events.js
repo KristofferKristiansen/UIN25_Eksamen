@@ -9,6 +9,15 @@ export const events = {
       type: 'string'
     },
     {
+      name: "slug",
+      title: "URL",
+      type: "slug",
+      options: {
+        source: "title",
+        maxLength: 50
+      }
+    },
+    {
       name: 'apiId',
       title: 'API-ID',
       type: 'string',
