@@ -1,4 +1,4 @@
-export const event = {
+export const events = {
   name: 'event',
   title: 'Event',
   type: 'document',
