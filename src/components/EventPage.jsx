@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/eventpage.scss"; // Importer SCSS-filen
+import sanityClient from "../sanityClient";
+import "../styles/eventpage.scss";
 
 export default function EventPage() {
-  const { id } = useParams(); //Bruker Useparams for å hent ID-en fra URL
+  const { id } = useParams();
   const [event, setEvent] = useState(null);
+  const [socialLinks, setSocialLinks] = useState(null);
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
 
@@ -12,7 +14,7 @@ export default function EventPage() {
     const fetchEvent = async () => {
       const apiKey = import.meta.env.VITE_TICKETMASTER_API_KEY;
       try {
-        const res = await fetch( //Gjør et kall på API til Ticketmaster for å hente spesifikt event basert på ID
+        const res = await fetch(
           `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${apiKey}`
         );
         if (!res.ok) {
@@ -20,7 +22,14 @@ export default function EventPage() {
         }
         const data = await res.json();
         setEvent(data);
-      } catch (error) { //Feilhåndtering. Hvis noe går galt, setter det en error
+
+        // Hent sosiale lenker fra Sanity
+        const sanityResult = await sanityClient.fetch(
+          `*[_type == "event" && apiId == "${id}"][0]{ socialLinks }`
+        );
+        setSocialLinks(sanityResult?.socialLinks || null);
+
+      } catch (error) {
         setError(error.message); 
         console.error("Feil ved henting av event:", error);
       } finally {
@@ -51,26 +60,34 @@ export default function EventPage() {
         ))}
       </ul>
 
-      <section className="social">
-        <p><strong>Følg oss på sosiale medier:</strong></p>
-        <ul className="social-icons">
-          <li>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-              <i className="fa-brands fa-instagram"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-              <i className="fa-brands fa-facebook"></i>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <i className="fa-brands fa-x-twitter"></i>
-            </a>
-          </li>
-        </ul>
-      </section>
+      {socialLinks && (
+        <section className="social">
+          <p><strong>Følg oss på sosiale medier:</strong></p>
+          <ul className="social-icons">
+            {socialLinks.instagram && (
+              <li>
+                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
+                  <i className="fa-brands fa-instagram"></i>
+                </a>
+              </li>
+            )}
+            {socialLinks.facebook && (
+              <li>
+                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer">
+                  <i className="fa-brands fa-facebook"></i>
+                </a>
+              </li>
+            )}
+            {socialLinks.x && (
+              <li>
+                <a href={socialLinks.x} target="_blank" rel="noopener noreferrer">
+                  <i className="fa-brands fa-x-twitter"></i>
+                </a>
+              </li>
+            )}
+          </ul>
+        </section>
+      )}
 
       <h3>Festivalpass:</h3>
       <ul className="passes">

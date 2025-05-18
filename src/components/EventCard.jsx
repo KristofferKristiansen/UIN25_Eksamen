@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/eventcard.scss";
 
+
 export default function EventCard({ event }) {
   const image = event.images?.[0]?.url;
   const title = event.customTitle || event.name;

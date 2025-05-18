@@ -24,6 +24,17 @@ export const events = {
       description: 'ID hentet fra Ticketmaster sitt API'
     },
     {
+      name: "socialLinks",
+      title: "Sosiale lenker",
+      type: "object",
+      fields:     [
+        { name: "instagram", title: "Instagram", type: "url" },
+        { name: "facebook", title: "Facebook", type: "url" },
+        { name: "x", title: "X (Twitter)", type: "url" }
+      ]
+    },
+
+    {
       name: 'category',
       title: 'Kategori',
       type: 'string',

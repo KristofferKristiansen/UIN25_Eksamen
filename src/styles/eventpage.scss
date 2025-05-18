@@ -48,15 +48,11 @@
   list-style: none;
 
   .pass-card {
-    border-radius: 6px;
     padding: 1rem;
     text-align: center;
-    border: 1px solid #ccc;
-    background-color: #fafafa;
 
     img {
       width: 100%;
-      border-radius: 4px;
     }
 
     h4 {
@@ -78,16 +74,13 @@
         font-weight: 500;
         transition: background-color 0.2s;
 
-        &:hover {
-          background-color: #ddd;
-        }
 
         &.wishlist {
-          background-color: #333;
+          background-color: #000000;
           color: white;
 
           &:hover {
-            background-color: #000;
+            background-color: #333;
           }
         }
       }

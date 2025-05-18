@@ -1,87 +1,96 @@
 import { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
-import { Link } from "react-router-dom";
 import EventCard from "./EventCard";
 import MoreEventCards from "./MoreEventCards";
 import "../styles/home.scss";
 
 export default function Home() {
-  const [events, setEvents] = useState([]); //Alle eventer hentet fra Ticketmaster via Sanity
+  const [events, setEvents] = useState([]); // Sommerens festivaler
+  const [cityevents, setCityevents] = useState([]); // Eventer per valgt by
   const [selectedCity, setSelectedCity] = useState("Oslo");
-  const [cityevents, setCityevents] = useState([]);
 
   const cities = ["Oslo", "Stockholm", "Berlin", "London", "Paris"];
+  const apiKey = "V1AMlgj055WhvVHBvdjBPdaeOn7vZrRZ";
 
-  useEffect(() => { //Koden under henter detaljer fraTicketmaster ved å bruke APID
-    const fetchEventIdsFromSanity = async () => {
+  // Hent utvalgte festivaler + sosiale lenker
+  useEffect(() => {
+    const fetchSelectedFestivals = async () => {
       try {
-        const data = await sanityClient.fetch(`*[_type == "event" && defined(apiId)]{title, apiId}`);
-        return data;
-      } catch (error) {
-        console.error("Feil ved henting av event-ID-er fra Sanity:", error);
-        return [];
-      }
-    };
+        const data = await sanityClient.fetch(`
+          *[
+            _type == "event" &&
+            defined(apiId) &&
+            (
+              title match "findings festival" ||
+              title match "tons of rock" ||
+              title match "skeikampenfestivalen" ||
+              title match "neon festival"
+            )
+          ]{
+            title,
+            apiId,
+            socialLinks
+          }
+        `);
 
-    const fetchEventsFromTicketmaster = async (sanityEvents) => {
-      const apiKey = "V1AMlgj055WhvVHBvdjBPdaeOn7vZrRZ";
-
-      try {
-        const promises = sanityEvents.map((sanityEvent) =>
-          fetch(`https://app.ticketmaster.com/discovery/v2/events/${sanityEvent.apiId}.json?apikey=${apiKey}`)
+        const promises = data.map((festival) =>
+          fetch(`https://app.ticketmaster.com/discovery/v2/events/${festival.apiId}.json?apikey=${apiKey}`)
             .then((res) => {
-              if (!res.ok) throw new Error(`Feil for ID ${sanityEvent.apiId}`);
+              if (!res.ok) {
+                console.error(`Feil ved henting av: ${festival.title} (ID: ${festival.apiId})`);
+                return null;
+              }
               return res.json().then((tmEvent) => ({
                 ...tmEvent,
-                customTitle: sanityEvent.title,
+                customTitle: festival.title,
+                socialLinks: festival.socialLinks || null,
               }));
             })
         );
 
         const results = await Promise.all(promises);
-        setEvents(results);
-        filterEventsByCity(results, selectedCity);
+        setEvents(results.filter(Boolean));
       } catch (error) {
-        console.error("Feil ved henting av eventdata fra Ticketmaster:", error);
+        console.error("Feil ved henting av utvalgte festivaler:", error);
       }
     };
 
-    const loadEvents = async () => {
-      const sanityEvents = await fetchEventIdsFromSanity();
-      if (sanityEvents.length > 0) {
-        fetchEventsFromTicketmaster(sanityEvents);
-      }
-    };
-
-    loadEvents();
+    fetchSelectedFestivals();
   }, []);
 
-  const handleClick = (city) => { //Filtrerer eventer når brukeren trykker på en by
-    setSelectedCity(city);
-    filterEventsByCity(events, city);
-  };
+  // Hent eventer per valgt by
+  useEffect(() => {
+    const fetchEventsByCity = async (city) => {
+      try {
+        const response = await fetch(
+          `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${apiKey}&city=${city}&size=10`
+        );
+        const data = await response.json();
+        const events = data._embedded?.events || [];
+        setCityevents(events);
+      } catch (error) {
+        console.error("Feil ved henting av eventer for byen:", city, error);
+      }
+    };
 
-  const filterEventsByCity = (allEvents, city) => { //Filtrerer basert på navnet til byen i eventet
-    const filtered = allEvents.filter((event) =>
-      event._embedded?.venues?.[0]?.city?.name === city
-    );
-    setCityevents(filtered);
+    fetchEventsByCity(selectedCity);
+  }, [selectedCity]);
+
+  const handleClick = (city) => {
+    setSelectedCity(city);
   };
 
   return (
     <main className="home">
-      <h1>Sommerens Festivaler!</h1>
-
-      {/* Alle eventer som skal vises på toppen*/}
+      <h1>Sommerens Festivaler</h1>
       <article className="event-list">
         {events.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
       </article>
 
-      {/* Filtrerbare events per by, som vises nede (ikke noe knapper) */}
       <article className="cityevents">
-        <h3>Hva skjer i verdens storbyer!</h3>
+        <h3>Hva skjer i verdens storbyer</h3>
         <ul className="citybtns">
           {cities.map((city) => (
             <li key={city}>
@@ -91,13 +100,13 @@ export default function Home() {
             </li>
           ))}
         </ul>
-        {/*Viser kun eventer i valgt by*/}
+
         <h3 className="selectedcity">Dette kan du oppleve i: {selectedCity}</h3>
         <ul className="event-list">
-            {cityevents.map((event) => (
+          {cityevents.map((event) => (
             <li key={event.id}>
-            <MoreEventCards event={event} />
-          </li>
+              <MoreEventCards event={event} />
+            </li>
           ))}
         </ul>
       </article>
