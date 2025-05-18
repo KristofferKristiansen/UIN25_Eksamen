@@ -75,14 +75,14 @@ export default function Home() {
       <h1>Sommerens Festivaler!</h1>
 
       {/* Alle eventer som skal vises på toppen*/}
-      <section className="event-list">
+      <article className="event-list">
         {events.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
-      </section>
+      </article>
 
       {/* Filtrerbare events per by, som vises nede (ikke noe knapper) */}
-      <section className="cityevents">
+      <article className="cityevents">
         <h3>Hva skjer i verdens storbyer!</h3>
         <ul className="citybtns">
           {cities.map((city) => (
@@ -101,7 +101,7 @@ export default function Home() {
           </li>
           ))}
         </ul>
-      </section>
+      </article>
     </main>
   );
 }
