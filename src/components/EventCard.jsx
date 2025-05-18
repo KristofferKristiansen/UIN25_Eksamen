@@ -5,6 +5,7 @@ export default function EventCard({ event }) {
   const image = event.images?.[0]?.url;
   const title = event.customTitle || event.name;
 
+  {/*Brukergrensesnitt for eventkort*/}
   return (
     <article className="event-card">
       {image && <img src={image} alt={title} />}

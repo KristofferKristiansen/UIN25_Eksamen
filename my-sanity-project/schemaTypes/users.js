@@ -1,3 +1,4 @@
+{/*Java kode for sanity. For de ulike brukerene for nettstedet*/}
 export const users = {
   name: 'user',
   title: 'Bruker',
