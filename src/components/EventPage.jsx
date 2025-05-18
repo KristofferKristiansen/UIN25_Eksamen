@@ -2,16 +2,20 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function EventPage() {
-  const { id } = useParams();
+  const { id } = useParams(); //Bruker Useparams for å hent ID-en fra URL
   const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true); 
   const [error, setError] = useState(null);
 
   useEffect(() => {
+<<<<<<< HEAD
     const fetchEvent = async (id) => {
+=======
+    const fetchEvent = async () => { //Lager en asynkron funksjon for å hente ut data fra Ticketmaster
+>>>>>>> 8706df2674f048c8978e5177afad9dc7ffa7ee25
       const apiKey = process.env.REACT_APP_TICKETMASTER_API_KEY; 
       try {
-        const res = await fetch(
+        const res = await fetch( //Gjør et kall på API til Ticketmaster for å hente spesifikt event basert på ID
           `https://app.ticketmaster.com/discovery/v2/events/${id}.json?apikey=${apiKey}`
         );
         if (!res.ok) {
@@ -19,7 +23,7 @@ export default function EventPage() {
         }
         const data = await res.json();
         setEvent(data);
-      } catch (error) {
+      } catch (error) { //Feilhåndtering. Hvis noe går galt, setter det en error
         setError(error.message); 
         console.error("Feil ved henting av event:", error);
       } finally {

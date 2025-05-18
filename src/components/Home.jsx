@@ -6,13 +6,13 @@ import MoreEventCards from "./MoreEventCards";
 import "../styles/home.scss";
 
 export default function Home() {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]); //Alle eventer hentet fra Ticketmaster via Sanity
   const [selectedCity, setSelectedCity] = useState("Oslo");
   const [cityevents, setCityevents] = useState([]);
 
   const cities = ["Oslo", "Stockholm", "Berlin", "London", "Paris"];
 
-  useEffect(() => {
+  useEffect(() => { //Koden under henter detaljer fraTicketmaster ved å bruke APID
     const fetchEventIdsFromSanity = async () => {
       try {
         const data = await sanityClient.fetch(`*[_type == "event" && defined(apiId)]{title, apiId}`);
@@ -56,12 +56,12 @@ export default function Home() {
     loadEvents();
   }, []);
 
-  const handleClick = (city) => {
+  const handleClick = (city) => { //Filtrerer eventer når brukeren trykker på en by
     setSelectedCity(city);
     filterEventsByCity(events, city);
   };
 
-  const filterEventsByCity = (allEvents, city) => {
+  const filterEventsByCity = (allEvents, city) => { //Filtrerer basert på navnet til byen i eventet
     const filtered = allEvents.filter((event) =>
       event._embedded?.venues?.[0]?.city?.name === city
     );
@@ -91,6 +91,7 @@ export default function Home() {
             </li>
           ))}
         </ul>
+        {/*Viser kun eventer i valgt by*/}
         <h3 className="selectedcity">Dette kan du oppleve i: {selectedCity}</h3>
         <ul className="event-list">
             {cityevents.map((event) => (
