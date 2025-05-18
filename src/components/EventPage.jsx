@@ -100,15 +100,8 @@ export default function EventPage() {
             <ul className="artist-list">
               {event._embedded.attractions
                 .filter((artist) => {
-                  const name = artist.name?.toLowerCase();
                   const genre = artist.classifications?.[0]?.genre?.name?.toLowerCase();
-
-                  // Fjern "Findings Festival" og uønskede sjangre
-                  return (
-                    name !== "findings festival" &&
-                    genre !== "festival" &&
-                    genre !== "miscellaneous"
-                  );
+                  return genre !== "festival" && genre !== "miscellaneous";
                 })
                 .map((artist) => (
                   <li key={artist.id} className="artist-card">
