@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import EventPage from "./components/EventPage";
 import CategoryPage from "./components/CategoryPage";
 import Dashboard from "./components/Dashboard";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 
 function App() {

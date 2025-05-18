@@ -40,19 +40,37 @@ export default function EventPage() {
 
       <h3>Sjanger:</h3>
       <ul className="genres">
-  {[...new Set(
-    event.classifications?.flatMap(item => [
-      item.segment?.name,
-      item.genre?.name,
-      item.subGenre?.name
-    ]).filter(Boolean)
-  )].map((genre, index) => (
-    <li key={index}>{genre}</li>
-  ))}
-</ul>
+        {[...new Set(
+          event.classifications?.flatMap(item => [
+            item.segment?.name,
+            item.genre?.name,
+            item.subGenre?.name
+          ]).filter(Boolean)
+        )].map((genre, index) => (
+          <li key={index}>{genre}</li>
+        ))}
+      </ul>
 
-
-      <p><strong>Følg oss på sosiale medier:</strong></p>
+      <section className="social">
+        <p><strong>Følg oss på sosiale medier:</strong></p>
+        <ul className="social-icons">
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <i className="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <i className="fa-brands fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <i className="fa-brands fa-x-twitter"></i>
+            </a>
+          </li>
+        </ul>
+      </section>
 
       <h3>Festivalpass:</h3>
       <ul className="passes">
