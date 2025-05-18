@@ -8,11 +8,7 @@ export default function EventPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-<<<<<<< HEAD
-    const fetchEvent = async (id) => {
-=======
-    const fetchEvent = async () => { //Lager en asynkron funksjon for å hente ut data fra Ticketmaster
->>>>>>> 8706df2674f048c8978e5177afad9dc7ffa7ee25
+    const fetchEvent = async () => {
       const apiKey = process.env.REACT_APP_TICKETMASTER_API_KEY; 
       try {
         const res = await fetch( //Gjør et kall på API til Ticketmaster for å hente spesifikt event basert på ID
