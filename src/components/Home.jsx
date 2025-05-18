@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import sanityClient from "../sanityClient";
 import { Link } from "react-router-dom";
-import Nav from "./Nav";
 import EventCard from "./EventCard";
 import MoreEventCards from "./MoreEventCards";
 import "../styles/home.scss";
@@ -71,7 +70,6 @@ export default function Home() {
 
   return (
     <main className="home">
-      <Nav />
       <h1>Sommerens Festivaler!</h1>
 
       {/* Alle eventer som skal vises på toppen*/}

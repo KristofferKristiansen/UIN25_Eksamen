@@ -8,7 +8,7 @@ export default function EventPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchEvent = async () => {
+    const fetchEvent = async (id) => {
       const apiKey = process.env.REACT_APP_TICKETMASTER_API_KEY; 
       try {
         const res = await fetch(
