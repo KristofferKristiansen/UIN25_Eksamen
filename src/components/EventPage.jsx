@@ -92,6 +92,37 @@ export default function EventPage() {
           </li>
         ))}
       </ul>
+
+      {event._embedded?.attractions && (
+        <>
+          <h3>Artister:</h3>
+          <article className="artists">
+            <ul className="artist-list">
+              {event._embedded.attractions
+                .filter((artist) => {
+                  const name = artist.name?.toLowerCase();
+                  const genre = artist.classifications?.[0]?.genre?.name?.toLowerCase();
+
+                  // Fjern "Findings Festival" og uønskede sjangre
+                  return (
+                    name !== "findings festival" &&
+                    genre !== "festival" &&
+                    genre !== "miscellaneous"
+                  );
+                })
+                .map((artist) => (
+                  <li key={artist.id} className="artist-card">
+                    <img
+                      src={artist.images?.[0]?.url}
+                      alt={artist.name}
+                    />
+                    <p>{artist.name}</p>
+                  </li>
+                ))}
+            </ul>
+          </article>
+        </>
+      )}
     </main>
   );
 }
