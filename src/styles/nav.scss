@@ -1,73 +1,48 @@
-header {
-    width: 100%;
-    font-family: 'Roboto', sans-serif;
-      
-    nav {
-      margin-top: 1.5rem;
-      text-align: left;
-      
- 
-      .navigasjon {
-        display: flex;
-        align-items: center;
-        list-style: none;
+.navigasjon {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 
-        padding: 0;
-        margin: 0;
-  
-        li {
-          margin: 0 0.5rem;
-  
-          a {
-            display: block;
-            text-decoration: none;
-            color: #000000;
-            padding: 0.5rem 1rem;
-            font-weight: bold;
-            font-size: 1.5rem;
-            border-radius: 4px;
-  
-            &:hover {
-              color: #ffffff;
-              background-color: #000000;
-            }
-  
-            &.active {
-              background-color: transparent;
-              color: #000000;
-            }
-          }
-        }
-  
-        .billettlyst {
-          display: inline-block;
-          text-align: left;
-          margin-right: auto;
-          margin-left: 0;
-        }
+  li {
+    margin: 0 1rem;
 
-        .billettlyst a {
-          padding: 0;
-          font-size: 2rem;
-          color: #0f96e4;
-        }
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #000;
 
-        .underholdning {
-          margin-left: 0;
-          margin-right: 0;
-          gap: 1rem;
-          padding: 0;
-        }
-  
-        .login {
-          margin-left: auto;
-          margin-right: 0;
-        }
-
-        .login a {
-          padding: 0;
-        }
+      &:hover {
+        color: #000000;
+        background-color: transparent;
+        padding: 0.3rem 0.8rem;
+        transition: background-color 0.2s;
       }
     }
   }
-  
+
+  .billettlyst {
+    margin-right: auto;
+
+    a {
+      font-size: 2rem;
+      color: #000000;
+      padding: 0;
+    }
+  }
+
+  .underholdning {
+    margin: 0 0.5rem;
+  }
+
+  .login {
+    margin-left: auto;
+
+    a {
+      padding: 0;
+    }
+  }
+}

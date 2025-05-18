@@ -21,10 +21,6 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
 
 button {
   border: none;
@@ -43,6 +39,12 @@ button:hover {
 
 
 header {
-    margin-left: 5rem;
+    width: 100%;
     
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
 }
