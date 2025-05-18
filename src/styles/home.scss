@@ -1,0 +1,61 @@
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .citybtns {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0;
+  margin-bottom: 1rem;
+  border-radius: none;
+
+  li {
+    margin: 0;
+  }
+}
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+ .event-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+  article {
+    padding: 0;
+    padding-bottom: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .event-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .event-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

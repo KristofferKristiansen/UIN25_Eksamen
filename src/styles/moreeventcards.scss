@@ -1,0 +1,28 @@
+.visual-card {
+  width: 330px;
+  text-align: left;
+  background: transparent;
+  transition: transform 0.2s ease;
+
+  img {
+    width: 280px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+   &:hover {
+    transform: translateY(-4px);
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #111;
+  }
+}

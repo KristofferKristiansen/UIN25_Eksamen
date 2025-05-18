@@ -4,8 +4,8 @@ export default function CategoryPage() {
   const { category } = useParams();
 
   return (
-    <div>
+    <main>
       <h1>Kategori: {category}</h1>
-    </div>
+    </main>
   );
 }

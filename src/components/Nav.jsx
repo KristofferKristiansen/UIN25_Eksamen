@@ -1,12 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
-import '../styling/nav.scss'
+import { NavLink } from "react-router-dom";
+import "../styles/nav.scss";
 
 export default function Nav() {
   return (
     <header>
       <nav>
         <ul className="navigasjon">
-          <li className="billettlyst"><Link to="/">BillettLyst</Link></li>
+          <li className="billettlyst"><NavLink to="/">BillettLyst</NavLink></li>
           
           <li className="underholdning"><NavLink to="/category/musikk">Musikk</NavLink></li>
           <li className="underholdning"><NavLink to="/category/teater">Teater</NavLink></li>

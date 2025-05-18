@@ -1,0 +1,44 @@
+.event-card {
+    max-width: 100%;
+    width: 330px;
+    height: 330px;
+    padding: 1rem;
+    background: transparent;
+    text-align: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+
+    .event-card a{
+        text-align: left;
+        align-items: left;
+    }
+
+  img {
+    width: 280px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  h2 {
+    margin: 0.8rem 0;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}

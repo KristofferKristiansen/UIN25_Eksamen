@@ -34,9 +34,9 @@ export default function EventPage() {
   if (error) return <p>Beklager, noe gikk galt: {error}</p>;
 
   return (
-    <div>
+    <main>
       <h1>{event.name}</h1>
-      {/* Du kan vise flere detaljer her, som beskrivelse, sted, tid, etc. */}
-    </div>
+      
+    </main>
   );
 }

@@ -1,16 +1,17 @@
 header {
     width: 100%;
     font-family: 'Roboto', sans-serif;
-    border-bottom: 1px solid #000;
-  
+      
     nav {
       margin: 0 auto;
-      padding: 1rem 2rem;
+      text-align: left;
+      
  
       .navigasjon {
         display: flex;
         align-items: center;
         list-style: none;
+
         padding: 0;
         margin: 0;
   
@@ -20,30 +21,51 @@ header {
           a {
             display: block;
             text-decoration: none;
+            color: #000000;
             padding: 0.5rem 1rem;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 1.5rem;
             border-radius: 4px;
   
             &:hover {
               color: #ffffff;
-              background-color: #1d4274;
+              background-color: #000000;
             }
   
             &.active {
-              background-color: #1d4274;
-              color: #ffffff;
+              background-color: transparent;
+              color: #000000;
             }
           }
         }
   
         .billettlyst {
+          display: inline-block;
+          text-align: left;
           margin-right: auto;
+          margin-left: 0;
+        }
 
+        .billettlyst a {
+          padding: 0;
+          font-size: 2rem;
+          color: #0f96e4;
+        }
+
+        .underholdning {
+          margin-left: 0;
+          margin-right: 0;
+          gap: 1rem;
+          padding: 0;
         }
   
         .login {
           margin-left: auto;
+          margin-right: 0;
+        }
+
+        .login a {
+          padding: 0;
         }
       }
     }
