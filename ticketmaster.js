@@ -1,5 +1,3 @@
-// src/api/ticketmaster.js
-
 const API_KEY = "V1AMlgj055WhvVHBvdjBPdaeOn7vZrRZ";
 const BASE_URL = "https://app.ticketmaster.com/discovery/v2";
 
@@ -10,7 +8,7 @@ export const fetchEventById = async (apiId) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error("❌ fetchEventById-feil:", error);
+    console.error("fetchEventById-feil:", error);
     return null;
   }
 };
@@ -24,7 +22,7 @@ export const fetchEventsByCity = async (city, size = 10) => {
     const data = await res.json();
     return data._embedded?.events || [];
   } catch (error) {
-    console.error("❌ fetchEventsByCity-feil:", error);
+    console.error("fetchEventsByCity-feil:", error);
     return [];
   }
 };
