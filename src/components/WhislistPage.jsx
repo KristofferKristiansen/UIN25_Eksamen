@@ -49,7 +49,7 @@ export default function Whislist() {
                 <img src={event.images?.[0]?.url} alt={event.name} />
                 <h3>{event.name}</h3>
                 <i
-                  className="fa-solid fa-heart"
+                  className="fa-solid fa-heart" //Hentet Ikon fra FontAwesome
                   onClick={() => toggleWishlist(event.id)}
                 ></i>
                 <p>{date}</p>

@@ -136,7 +136,7 @@ export default function CategoryPage() {
                 <img src={a.images?.[0]?.url} alt={a.name} />
                 <h3>{a.name}</h3>
                 <i
-                  className={`fa-heart ${isInWishlist(a.id) ? "fa-solid" : "fa-regular"}`} 
+                  className={`fa-heart ${isInWishlist(a.id) ? "fa-solid" : "fa-regular"}`} //Hentet Ikon fra FontAwesome
                   onClick={() => toggleWishlist(a.id)}
                   style={{ cursor: "pointer", fontSize: "1.2rem", color: isInWishlist(a.id) ? "red" : "#444" }}
                 ></i>
@@ -165,7 +165,7 @@ export default function CategoryPage() {
                   <img src={e.images?.[0]?.url} alt={e.name} />
                   <h3>{e.name}</h3>
                   <i
-                    className={`fa-heart ${isInWishlist(e.id) ? "fa-solid" : "fa-regular"}`}
+                    className={`fa-heart ${isInWishlist(e.id) ? "fa-solid" : "fa-regular"}`} //Hentet Ikon fra FontAwesome
                     onClick={() => toggleWishlist(e.id)}
                     style={{ cursor: "pointer", fontSize: "1.2rem", color: isInWishlist(e.id) ? "red" : "#444" }}
                   ></i>
@@ -192,7 +192,7 @@ export default function CategoryPage() {
                 <img src={v.images?.[0]?.url || "/placeholder.jpg"} alt={v.name} />
                 <h3>{v.name}</h3>
                 <i
-                  className={`fa-heart ${isInWishlist(v.id) ? "fa-solid" : "fa-regular"}`}
+                  className={`fa-heart ${isInWishlist(v.id) ? "fa-solid" : "fa-regular"}`} //Hentet ikon fra FontAwesome
                   onClick={() => toggleWishlist(v.id)}
                   style={{ cursor: "pointer", fontSize: "1.2rem", color: isInWishlist(v.id) ? "red" : "#444" }}
                 ></i>

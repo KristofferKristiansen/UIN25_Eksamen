@@ -60,6 +60,7 @@ export default function EventPage() {
         ))}
       </ul>
 
+      {/*Hentet ikoner fra FontAwesome*/}
       {socialLinks && (
         <section className="social">
           <p><strong>Følg oss på sosiale medier:</strong></p>
