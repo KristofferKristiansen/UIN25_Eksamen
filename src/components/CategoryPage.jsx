@@ -83,7 +83,7 @@ export default function CategoryPage() {
   };
 
   return (
-    <main className="category-page">
+    <main className="categorypage">
       <h1>Filtert søk</h1>
 
       <section className="filters">
@@ -129,14 +129,14 @@ export default function CategoryPage() {
 
       <article className="attractions">
         <h2>Attraksjoner</h2>
-        <ul className="card-list">
+        <ul className="categorylist">
           {attractions.length > 0 ? (
             attractions.map((a) => (
               <li key={a.id} className="card">
                 <img src={a.images?.[0]?.url} alt={a.name} />
                 <h3>{a.name}</h3>
                 <i
-                  className={`fa-heart ${isInWishlist(a.id) ? "fa-solid" : "fa-regular"}`}
+                  className={`fa-heart ${isInWishlist(a.id) ? "fa-solid" : "fa-regular"}`} 
                   onClick={() => toggleWishlist(a.id)}
                   style={{ cursor: "pointer", fontSize: "1.2rem", color: isInWishlist(a.id) ? "red" : "#444" }}
                 ></i>
@@ -150,7 +150,7 @@ export default function CategoryPage() {
 
       <article className="events">
         <h2>Arrangementer</h2>
-        <ul className="card-list">
+        <ul className="categorylist">
           {events.length > 0 ? (
             events.map((e) => {
               const date = e.dates?.start?.localDate || "Ukjent dato";
@@ -185,7 +185,7 @@ export default function CategoryPage() {
 
       <article className="venues">
         <h2>Spillesteder</h2>
-        <ul className="card-list">
+        <ul className="categorylist">
           {venues.length > 0 ? (
             venues.map((v) => (
               <li key={v.id} className="card">
