@@ -83,7 +83,7 @@ export default function Home() {
   return (
     <main className="home">
       <h1>Sommerens Festivaler</h1>
-      <article className="event-list">
+      <article className="eventlist">
         {events.map((event) => (
           <EventCard key={event.id} event={event} />
         ))}
@@ -102,7 +102,7 @@ export default function Home() {
         </ul>
 
         <h3 className="selectedcity">Dette kan du oppleve i: {selectedCity}</h3>
-        <ul className="event-list">
+        <ul className="eventlist">
           {cityevents.map((event) => (
             <li key={event.id}>
               <MoreEventCards event={event} />

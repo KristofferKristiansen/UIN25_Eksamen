@@ -63,7 +63,7 @@ export default function EventPage() {
       {socialLinks && (
         <section className="social">
           <p><strong>Følg oss på sosiale medier:</strong></p>
-          <ul className="social-icons">
+          <ul className="socialmediaicons">
             {socialLinks.instagram && (
               <li>
                 <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">
@@ -92,7 +92,7 @@ export default function EventPage() {
       <h3>Festivalpass:</h3>
       <ul className="passes">
         {[...Array(3)].map((_, i) => (
-          <li key={i} className="pass-card">
+          <li key={i} className="passcard">
             <img
               src={event.images?.[0]?.url}
               alt={event.name}
@@ -114,14 +114,14 @@ export default function EventPage() {
         <>
           <h3>Artister:</h3>
           <article className="artists">
-            <ul className="artist-list">
+            <ul className="artistlist">
               {event._embedded.attractions
                 .filter((artist) => {
                   const genre = artist.classifications?.[0]?.genre?.name?.toLowerCase();
                   return genre !== "festival" && genre !== "miscellaneous";
                 })
                 .map((artist) => (
-                  <li key={artist.id} className="artist-card">
+                  <li key={artist.id} className="artistcards">
                     <img
                       src={artist.images?.[0]?.url}
                       alt={artist.name}

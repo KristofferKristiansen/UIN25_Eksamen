@@ -12,7 +12,7 @@ export default function MoreEventCards({ event }) {
 
   {/*Hva de ulike komponentene skal vise*/}
   return (
-    <article className="visual-card">
+    <article className="visualcard">
       {image && <img src={image} alt={name} />}
       <h2>{name}</h2>
       <p>{date}</p>
