@@ -30,12 +30,12 @@ export default function Whislist() {
   }, [wishlist]);
 
   return (
-    <main className="whislist-page">
+    <main className="whislistpage">
       <h1>Min ønskeliste</h1>
       {items.length === 0 ? (
         <p>Du har ingen lagrede arrangementer.</p>
       ) : (
-        <ul className="card-list">
+        <ul className="cardlist">
           {items.map((event) => {
             const venue = event._embedded?.venues?.[0];
             const date = event.dates?.start?.localDate || "Ukjent dato";

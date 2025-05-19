@@ -1,4 +1,5 @@
 import { useState } from "react";
+import sanityClient from "../sanityClient";
 import "../styles/dashboard.scss"; // Husk å importere stilen
 
 export default function Dashboard() {
