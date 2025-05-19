@@ -48,13 +48,13 @@
   }
 
   @media (max-width: 900px) {
-    .event-list {
+    .eventlist {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   @media (max-width: 600px) {
-    .event-list {
+    .eventlist {
       grid-template-columns: 1fr;
     }
   }

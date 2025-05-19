@@ -8,7 +8,7 @@ export default function EventCard({ event }) {
 
   {/*Brukergrensesnitt for eventkort*/}
   return (
-    <article className="event-card">
+    <article className="eventcard">
       {image && <img src={image} alt={title} />}
       <h2>{title}</h2>
       <Link to={`/event/${event.id}`} className="btn">
